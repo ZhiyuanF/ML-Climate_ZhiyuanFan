@@ -13,4 +13,9 @@ Added references about:
 
 Data aquired from previous publications: daily data for Texas.
 
+2020-10-10
+Added code and Excel about how to fetch weather data 
+(including temperature data) from public database.
+Confirmed that although the data time series resolution is suitable for the study
+it need extra spatial resolution and processing
 
