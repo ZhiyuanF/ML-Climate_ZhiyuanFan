@@ -152,8 +152,10 @@ for epoch in range(n_epochs):
                 })
             generated_samples=generated_samples.reshape([-1,576])
             generated_samples = generated_samples * 16 #16 is the maximum value for wind capacity we use. Change to your max value here
-            csvfile=file('%s.csv' %iterations, 'wb')
+            csvfile=open('%s.csv' %iterations, 'w')
             writer=csv.writer(csvfile)
+            print(type(writer))
+            print(type(generated_samples))
             writer.writerows(generated_samples)
 
         iterations += 1
@@ -168,10 +170,10 @@ generated_samples = sess.run(
     })
 generated_samples=generated_samples.reshape([-1,576])
 generated_samples = generated_samples * 16 #16 is the maximum value for wind capacity we use. Change to your max value here
-csvfile=file('sample1.csv', 'wb')
+csvfile=open('sample1.csv', 'w')
 writer=csv.writer(csvfile)
 writer.writerows(generated_samples)
-csvfile=file('label1.csv', 'wb')
+csvfile=open('label1.csv', 'w')
 writer=csv.writer(csvfile)
 writer.writerows(Y_np_sample)
 

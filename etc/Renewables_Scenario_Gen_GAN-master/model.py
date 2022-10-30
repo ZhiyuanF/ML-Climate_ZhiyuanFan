@@ -1,7 +1,9 @@
 #The GANs model with Wasserstein distance along with helper functions
 
 #-*- coding: utf-8 -*-
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 #import ipdb
 
 
@@ -65,15 +67,15 @@ class GAN():
         self.dim_W2 = dim_W2
         self.dim_W3 = dim_W3
         self.dim_channel = dim_channel
-        self.gen_W1 = tf.Variable(tf.random_normal([dim_z+dim_y, dim_W1], stddev=0.02), name='gen_W1')
-        self.gen_W2 = tf.Variable(tf.random_normal([dim_W1+dim_y, dim_W2*6*6], stddev=0.02), name='gen_W2')
-        self.gen_W3 = tf.Variable(tf.random_normal([5,5,dim_W3,dim_W2+dim_y], stddev=0.02), name='gen_W3')
-        self.gen_W4 = tf.Variable(tf.random_normal([5,5,dim_channel,dim_W3+dim_y], stddev=0.02), name='gen_W4')
+        self.gen_W1 = tf.Variable(tf.random.normal([dim_z+dim_y, dim_W1], stddev=0.02), name='gen_W1')
+        self.gen_W2 = tf.Variable(tf.random.normal([dim_W1+dim_y, dim_W2*6*6], stddev=0.02), name='gen_W2')
+        self.gen_W3 = tf.Variable(tf.random.normal([5,5,dim_W3,dim_W2+dim_y], stddev=0.02), name='gen_W3')
+        self.gen_W4 = tf.Variable(tf.random.normal([5,5,dim_channel,dim_W3+dim_y], stddev=0.02), name='gen_W4')
 
-        self.discrim_W1 = tf.Variable(tf.random_normal([5,5,dim_channel+dim_y,dim_W3], stddev=0.02), name='discrim_W1')
-        self.discrim_W2 = tf.Variable(tf.random_normal([5,5,dim_W3+dim_y,dim_W2], stddev=0.02), name='discrim_W2')
-        self.discrim_W3 = tf.Variable(tf.random_normal([dim_W2*6*6+dim_y,dim_W1], stddev=0.02), name='discrim_W3')
-        self.discrim_W4 = tf.Variable(tf.random_normal([dim_W1+dim_y,1], stddev=0.02), name='discrim_W4')
+        self.discrim_W1 = tf.Variable(tf.random.normal([5,5,dim_channel+dim_y,dim_W3], stddev=0.02), name='discrim_W1')
+        self.discrim_W2 = tf.Variable(tf.random.normal([5,5,dim_W3+dim_y,dim_W2], stddev=0.02), name='discrim_W2')
+        self.discrim_W3 = tf.Variable(tf.random.normal([dim_W2*6*6+dim_y,dim_W1], stddev=0.02), name='discrim_W3')
+        self.discrim_W4 = tf.Variable(tf.random.normal([dim_W1+dim_y,1], stddev=0.02), name='discrim_W4')
 
     def build_model(self):
 
