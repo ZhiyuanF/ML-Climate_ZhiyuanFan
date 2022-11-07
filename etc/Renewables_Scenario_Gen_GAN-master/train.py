@@ -13,7 +13,7 @@ from numpy import shape
 import csv
 import matplotlib.pyplot as plt
 
-n_epochs = 70 #Number of overall training epochs on training data
+n_epochs = 100 #Number of overall training epochs on training data
 learning_rate = 0.0002 
 batch_size = 32
 image_shape = [24,24,1] #The shape for input data
@@ -32,8 +32,8 @@ generated_dim=32
 #Comment out corresponding part to reproduce the results for 
 #wind_events_generation, solar_events_generation, spatial_generation respectively
 trX, trY=load_wind()
-#trX, trY=load_solar()
-#trX, trY=load_spatial()
+#trX, trY=load_solar_data()
+#trX, trY=load_wind_data_spatial()
 
 print("shape of training samples ", shape(trX))
 print("Training data loaded")
@@ -60,8 +60,8 @@ gen_vars = filter(lambda x: x.name.startswith('gen'), tf.trainable_variables())
 discrim_vars = [i for i in discrim_vars]
 gen_vars = [i for i in gen_vars]
 
-train_op_discrim = (tf.train.RMSPropOptimizer(learning_rate=1e-4).minimize(-d_cost_tf, var_list=discrim_vars))
-train_op_gen = (tf.train.RMSPropOptimizer(learning_rate=1e-4).minimize(g_cost_tf, var_list=gen_vars))
+train_op_discrim = (tf.train.RMSPropOptimizer(learning_rate).minimize(-d_cost_tf, var_list=discrim_vars))
+train_op_gen = (tf.train.RMSPropOptimizer(learning_rate).minimize(g_cost_tf, var_list=gen_vars))
 
 Z_tf_sample, Y_tf_sample, image_tf_sample = dcgan_model.samples_generator(batch_size=visualize_dim)
 tf.initialize_all_variables().run()

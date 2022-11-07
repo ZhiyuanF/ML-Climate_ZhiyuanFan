@@ -59,4 +59,8 @@ Potential reason can be the version control of the "Tensorflow" package, which i
 Starting the extract the function and core code and migrate the the src.
 Potential update is required to the input data for training.
 
+2022-11-07
+Parameter check for model: now converging with testing data. Good progress.
+However, more functions of the GANs remain to be checked, especially the conditional GANs.
+Conditional function not yet working and still debugging now.
 
