@@ -64,3 +64,6 @@ Parameter check for model: now converging with testing data. Good progress.
 However, more functions of the GANs remain to be checked, especially the conditional GANs.
 Conditional function not yet working and still debugging now.
 
+2022-11-08
+Confirmed that the solar and spatial scenarios cannot run due to data-loading function
+Need extra work on that.

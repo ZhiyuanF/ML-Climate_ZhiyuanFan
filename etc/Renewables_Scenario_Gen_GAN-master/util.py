@@ -18,7 +18,7 @@ def OneHot(X, n, negative_class=0.):
     return Xoh
 
 
-#For saving image-like scenarios map
+# For saving image-like scenarios map
 def save_visualization(X, nh_nw, save_path='./vis/sample.jpg'):
     h,w = X.shape[1], X.shape[2]
     img = np.zeros((h * nh_nw[0], w * nh_nw[1], 3))
