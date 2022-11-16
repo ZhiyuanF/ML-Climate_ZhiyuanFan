@@ -67,3 +67,11 @@ Conditional function not yet working and still debugging now.
 2022-11-08
 Confirmed that the solar and spatial scenarios cannot run due to data-loading function
 Need extra work on that.
+
+2022-11-13
+Rewrite the main training function for spatially correlated data input.
+Function works properly with testing data and result converges.
+
+2022-11-14
+Make the solar main training function to work.
+Start working on the raw dataset input, which is in nc file format
