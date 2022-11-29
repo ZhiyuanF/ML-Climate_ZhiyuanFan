@@ -75,3 +75,11 @@ Function works properly with testing data and result converges.
 2022-11-14
 Make the solar main training function to work.
 Start working on the raw dataset input, which is in nc file format
+
+2022-11-29
+Major progress in data management: selected a subset of data due to large original dataset.
+data containing 16 locations that has hourly wind/solar/temperature data for over 40 years.
+Made progress on rearranging the image size for GAN to 5*5=25 data points
+since the study aims to increase daily average to hourly resolution 24 data points
+with additional 1 data appending to be the average of first 24 inputs.
+
