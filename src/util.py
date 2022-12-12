@@ -13,7 +13,7 @@ def OneHot(X, n, negative_class=0.):
         n = np.max(X) + 1
     Xoh = np.ones((len(X), n)) * negative_class
     for i in range(len(X)):
-        m=X[i]
+        m=int(X[i])
         Xoh[i,m]=1
     return Xoh
 

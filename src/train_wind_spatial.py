@@ -6,9 +6,9 @@
 import os
 import pandas as pd
 import numpy as np
-from model import *
+from model_hourly import *
 from util import *
-from load import load_wind, load_solar_data, load_wind_data_spatial #Change the data source for other tasks
+from load_5min import load_wind, load_solar_data, load_wind_data_spatial #Change the data source for other tasks
 from numpy import shape
 import csv
 import matplotlib.pyplot as plt

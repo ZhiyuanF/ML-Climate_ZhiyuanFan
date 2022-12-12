@@ -83,3 +83,16 @@ Made progress on rearranging the image size for GAN to 5*5=25 data points
 since the study aims to increase daily average to hourly resolution 24 data points
 with additional 1 data appending to be the average of first 24 inputs.
 
+2022-12-07
+Major update on the 5*5 hourly resolution data, cleaned the neural net-work to fit in the new size of data.
+However, the system quickly converges to and result in a overfitting problem (unconditional case).
+Will need to check the system later.
+
+2022-12-11
+Finished updating the 5*5 hourly resolution data.
+Conditional case will never converge due to unknown reason.
+Exploration of future development on GANs stops here.
+Later works on results analysis and report writing.
+
+
+
