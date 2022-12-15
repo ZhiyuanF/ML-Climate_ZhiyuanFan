@@ -94,5 +94,9 @@ Conditional case will never converge due to unknown reason.
 Exploration of future development on GANs stops here.
 Later works on results analysis and report writing.
 
+2022-12-14
+Added one last analysis with hourly solar results.
+Finished report writing and all the work.
+Make the final commit and push.
 
 

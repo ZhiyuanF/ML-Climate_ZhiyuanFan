@@ -13,7 +13,7 @@ import os
 def load_wind():
     #Example dataset created for evnet_based GANs wind scenarios generation
     # Data from NREL wind integrated datasets
-    with open('datasets/Wind_sub.csv', 'r') as csvfile:
+    with open('datasets/Solar_sub.csv', 'r') as csvfile:
         reader = csv.reader(csvfile)
         rows = [row for row in reader]
     rows = np.array(rows, dtype=float)
@@ -23,7 +23,7 @@ def load_wind():
     print("Maximum value of wind", m)
     print(shape(rows))
     for x in range(rows.shape[1]):
-        train = rows[:-20, x].reshape(-1, 24)
+        train = rows[:162480, x].reshape(-1, 24)
         # train = train / 16
 
         # print(shape(train))
@@ -31,24 +31,27 @@ def load_wind():
             trX = train
         else:
             trX = np.concatenate((trX, train), axis=0)
-    means = np.mean(trX, axis=1).reshape(-1, 1)
-    print("means shape is {}".format(shape(means)))
-    trX = np.concatenate((trX, means), axis=1)
+    #means = np.mean(trX, axis=1).reshape(-1, 1)
+    zero_fill = np.zeros((shape(trX)[0],1))
+    print("means shape is {}".format(shape(zero_fill)))
+    trX = np.concatenate((trX, zero_fill), axis=1)
 
     print("Shape TrX", shape(trX))
-
-    with open('datasets/wind label average hourly.csv', 'r') as csvfile:
+    '''
+    
+    with open('datasets/Solar label average hourly.csv', 'r') as csvfile:
         reader = csv.reader(csvfile)
         rows = [row for row in reader]
     label = np.array(rows, dtype=int)
-
+    
+    '''
     # testing with dummy label assumption
     # generate first half
-    #label_1 = np.zeros((int(shape(trX)[0]/2), 1))
+    label_1 = np.zeros((int(shape(trX)[0] / 2), 1))
     # generate second half
-    #label_2 = np.ones((int(shape(trX)[0]/2), 1))
+    label_2 = np.ones((int(shape(trX)[0] / 2), 1))
 
-    #label = np.concatenate((label_1, label_2), axis=0)
+    label = np.concatenate((label_1, label_2), axis=0)
 
     print("Label shape", shape(label))
     return trX, label
@@ -89,4 +92,6 @@ def load_solar_data():
 
 if __name__ == "__main__":
     trX, label = load_wind()
+    print(trX[0])
+    print(label[0])
 

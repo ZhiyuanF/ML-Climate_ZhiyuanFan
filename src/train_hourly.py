@@ -13,8 +13,8 @@ from numpy import shape
 import csv
 import matplotlib.pyplot as plt
 
-n_epochs = 70 #Number of overall training epochs on training data
-learning_rate = 0.0002
+n_epochs = 50 #Number of overall training epochs on training data
+learning_rate = 0.0001
 batch_size = 32
 image_shape = [5,5,1] #The shape for input data
 dim_z = 100 #input dimension for samples
@@ -23,7 +23,7 @@ dim_W2 = 128 #second layer neurons
 dim_W3 = 64 #third layer#16 is the maximum value for wind capacity we use. Change to your max value here
 dim_channel = 1 #reserved for future use if multi=channels
 mu, sigma = 0, 0.1 # input Gaussian
-events_num=16 #kind of events
+events_num=2 #kind of events
 
 visualize_dim=32
 generated_dim=32

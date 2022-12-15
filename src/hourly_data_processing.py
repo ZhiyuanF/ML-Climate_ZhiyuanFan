@@ -10,7 +10,7 @@ import os
 
 ## process the data labels for daily average
 
-with open('datasets/Wind_sub.csv', 'r') as csvfile:
+with open('datasets/Solar_sub.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
     rows = [row for row in reader]
 # store data by rows
@@ -22,7 +22,7 @@ print(shape(rows))
 for x in range(rows.shape[1]):
     # truncate the data so it fits into x*576 dimension
     # reshape the data for 576 (24*24)
-    train = rows[:-20, x].reshape(-1, 24)
+    train = rows[:162480, x].reshape(-1, 24)
     # print(shape(train))
 
     # add each training sample to the trX
@@ -32,19 +32,23 @@ for x in range(rows.shape[1]):
         trX = np.concatenate((trX, train), axis=0)
 
 print(shape(trX))
+print(trX[1])
 
 # make the mean for each training set to be its label
-label_a = np.rint(np.mean(trX, axis = 1))
+label_a = np.rint(np.mean(trX, axis = 1)/35)
 
 print(shape(label_a))
 
+
+'''
+# wind label technique
 # combine the set of labels without enough entries
 for i in range(label_a.shape[0]):
     if label_a[i] < 2.0:
         label_a[i] = 2.0
     elif label_a[i] > 15.0:
         label_a[i] = 15.0
-
+'''
 
 print("Maximum value of average",max(label_a))
 print("Minimum value of average",min(label_a))
@@ -55,6 +59,6 @@ unique, counts = np.unique(label_a, return_counts=True)
 print(dict(zip(unique, counts)))
 
 plt.hist(label_a, bins=int(max(label_a)-min(label_a)), density=True)
-#plt.show()
+plt.show()
 
-pd.DataFrame(label_a).to_csv("wind label average hourly.csv")
+pd.DataFrame(label_a).to_csv("Solar label average hourly.csv")

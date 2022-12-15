@@ -44,6 +44,13 @@ unique, counts = np.unique(label_a, return_counts=True)
 print(dict(zip(unique, counts)))
 
 plt.hist(label_a, bins=int(max(label_a)-min(label_a)), density=True)
-#plt.show()
+
+counts, edges, bars = plt.hist(label_a, bins=int(max(label_a)-min(label_a)))
+#counts = counts*9464
+plt.bar_label(bars)
+plt.ylabel('Integer label frequency')
+plt.xlabel('Label as the rounded integer value')
+
+plt.show()
 
 pd.DataFrame(label_a).to_csv("wind label average.csv")
